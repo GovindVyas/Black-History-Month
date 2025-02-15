@@ -1,0 +1,497 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Animation keyframes for entrance effects */
+@keyframes slideFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Add CSS variables for theme colors */
+:root {
+  /* Light theme colors (default) */
+  --bg-color: white;
+  --text-color: #1e2939;
+  --title-color: #1e2939;
+  --stripe-red: #ee1c25;
+  --stripe-yellow: #fdb913;
+  --stripe-green: #008751;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --bg-color: #1e2939;
+  --text-color: #ffffff;
+  --title-color: #ffffff;
+  --stripe-red: #ff4d4d;
+  --stripe-yellow: #ffd24d;
+  --stripe-green: #4dff88;
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--bg-color);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+  box-shadow: 0 0 0 3px var(--stripe-yellow);
+}
+
+/* Main layout styles */
+body {
+  background: var(--bg-color);
+  font-family: Jost, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Fist logo styles */
+.fist-container {
+  width: 300px;
+  flex-shrink: 0;
+  opacity: 0;
+  animation: scaleIn 1s ease forwards;
+}
+
+.fist-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Main content area */
+.content {
+  flex: 1;
+}
+
+/* Title typography styles */
+.title-word {
+  display: block;
+  font-size: 5rem;
+  letter-spacing: 7px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0;
+  margin-left: 60px;
+  color: var(--title-color);
+}
+
+/* Title animation sequences */
+.black {
+  animation: slideFromTop 1s ease 1s forwards;
+}
+.history {
+  animation: slideFromLeft 1s ease 1.5s forwards;
+}
+.month {
+  animation: slideFromBottom 1s ease 2s forwards;
+}
+
+/* Title container layout */
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Decorative vertical stripe with pan-African colors */
+.vertical-stripe {
+  width: 8px;
+  height: 240px;
+  background: linear-gradient(
+    to bottom,
+    var(--stripe-red) 33%,
+    var(--stripe-yellow) 33%,
+    var(--stripe-yellow) 66%,
+    var(--stripe-green) 66%
+  );
+  margin: 0 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.5s forwards;
+}
+
+/* Year display styles */
+.year-container {
+  opacity: 0;
+  animation: slideFromRight 1s ease 3s forwards;
+}
+
+.year {
+  font-size: 5rem;
+  letter-spacing: 7px;
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--title-color);
+}
+
+/* Date display styles */
+.dates {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  opacity: 0;
+  margin-left: 60px;
+  animation: slideFromRight 1s ease 3.5s forwards;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Decorative skyline image */
+.skyline {
+  margin: 30px 0;
+  height: 120px;
+  background: url("public/bulding-bg.png") no-repeat center;
+  background-size: contain;
+  opacity: 0;
+  animation: fadeIn 1s ease 4s forwards;
+}
+
+/* Action buttons container */
+.actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Common action button styles */
+.action {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  padding: 10px;
+  position: relative;
+  font-size: 1.6rem;
+  opacity: 0;
+}
+
+/* Individual action button animations and colors */
+.celebrate {
+  animation: fadeIn 1s ease 4.5s forwards;
+  color: var(--stripe-red);
+}
+.educate {
+  animation: fadeIn 1s ease 5s forwards;
+  color: var(--stripe-yellow);
+}
+.inspire {
+  animation: fadeIn 1s ease 5.5s forwards;
+  color: var(--stripe-green);
+}
+
+/* Action button underline decoration */
+.action::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+/* Action button underline colors */
+.celebrate::after {
+  background: var(--stripe-red);
+}
+.educate::after {
+  background: var(--stripe-yellow);
+}
+.inspire::after {
+  background: var(--stripe-green);
+}
+
+/* Audio controls positioning */
+.audio-controls {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 1000;
+}
+
+/* Hide default audio controls */
+.audio-controls audio {
+  display: none;
+}
+
+/* Audio button styling to match theme toggle */
+.audio-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--bg-color);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.audio-btn:hover {
+  transform: scale(1.1);
+}
+
+.audio-btn:focus {
+  box-shadow: 0 0 0 3px var(--stripe-yellow);
+}
+
+.audio-btn.playing {
+  animation: pulse 1.5s infinite;
+}
+
+/* Pulse animation for playing state */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .title-word {
+    font-size: 4rem;
+    margin-left: 80px;
+  }
+
+  .dates {
+    margin-left: 80px;
+  }
+
+  .vertical-stripe {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .fist-container {
+    width: 180px;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .title-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .title-word {
+    font-size: 3rem;
+    margin-left: 0;
+    letter-spacing: 4px;
+  }
+
+  /* Transform vertical stripe to horizontal */
+  .vertical-stripe {
+    width: 240px; /* Use the previous height as width */
+    height: 6px; /* Use the previous width as height */
+    margin: 15px auto;
+    background: linear-gradient(
+      to right,
+      /* Change gradient direction to right */ var(--stripe-red) 33%,
+      var(--stripe-yellow) 33%,
+      var(--stripe-yellow) 66%,
+      var(--stripe-green) 66%
+    );
+  }
+
+  /* Keep year on single line */
+  .year {
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+  }
+
+  .year br {
+    display: none; /* Remove line break in year */
+  }
+
+  .dates {
+    margin-left: 0;
+    font-size: 1.2rem;
+  }
+
+  .skyline {
+    height: 80px;
+    margin: 20px 0;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+  }
+
+  .action {
+    font-size: 1.4rem;
+  }
+
+  .action::after {
+    height: 15px;
+    bottom: -8px;
+  }
+
+  /* Adjust control buttons for mobile */
+  .theme-toggle,
+  .audio-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .audio-controls {
+    top: 20px;
+    right: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-word {
+    font-size: 2.5rem;
+  }
+
+  .year {
+    font-size: 3rem;
+  }
+
+  .fist-container {
+    width: 150px;
+  }
+
+  .vertical-stripe {
+    width: 180px; /* Adjust width for smaller screens */
+  }
+
+  .skyline {
+    height: 60px;
+  }
+
+  /* Stack control buttons vertically */
+  .audio-controls {
+    top: 70px;
+    right: 20px;
+  }
+}
+
+/* Add prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
