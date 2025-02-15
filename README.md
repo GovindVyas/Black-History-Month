@@ -20,7 +20,7 @@ A web-based application featuring background music controls and interactive elem
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
+git clone https://github.com/GovindVyas/Black-History-Month
 ```
 2. Open `index.html` in your preferred web browser
 3. No build process required - runs directly in the browser
